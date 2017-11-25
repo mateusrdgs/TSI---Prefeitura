@@ -12,7 +12,7 @@ namespace TSI___Prefeitura___Aplicacao
 
         public void salvarDepartamento(Ordem ordem)
         {
-            if (ordem.nCodOrdem <= 0)
+            if (ordem.CodOrdem <= 0)
             {
                 this.cadastrarOrdem(ordem);
             }
@@ -28,7 +28,7 @@ namespace TSI___Prefeitura___Aplicacao
                 string.Format(
                     @"INSERT INTO tblFuncionario(sNomeDepartamento, nCodGerente)
                       VALUES ('{0}', '{1}')",
-                    ordem.sDescricao, ordem.nCodFuncionario
+                    ordem.Descricao, ordem.CodFuncionario
                 );
             using (contexto = new Contexto())
             {
@@ -73,7 +73,7 @@ namespace TSI___Prefeitura___Aplicacao
                 string.Format(
                     @"UPDATE tblOrdem
                       SET sDescricao = '{0}', nCodFuncionario = '{1}'",
-                    ordem.sDescricao, ordem.nCodFuncionario
+                    ordem.Descricao, ordem.CodFuncionario
                 );
             using (contexto = new Contexto())
             {

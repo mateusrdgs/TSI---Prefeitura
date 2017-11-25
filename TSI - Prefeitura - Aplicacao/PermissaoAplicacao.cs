@@ -1,34 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using TSI___Prefeitura___Dominio;
 using TSI___Prefeitura___Repositorio;
 
 namespace TSI___Prefeitura___Aplicacao
 {
-    public class DepartamentoAplicacao
+    public class PermissaoAplicacao
     {
         private Contexto contexto;
 
-        public void salvarDepartamento(Departamento departamento)
+        public void salvarPermissao(Permissao permissao)
         {
-            if (departamento.CodDepartamento <= 0)
+            if (permissao.CodPermissao <= 0)
             {
-                this.cadastrarDepartamento(departamento);
+                this.cadastrarPermissao(permissao);
             }
             else
             {
-                this.atualizarDepartamento(departamento);
+                this.atualizarPermissao(permissao);
             }
         }
 
-        public void cadastrarDepartamento(Departamento departamento)
+        public void cadastrarPermissao(Permissao permissao)
         {
             string strComando =
                 string.Format(
-                    @"INSERT INTO tblDepartamento
-                      VALUES ('{0}', '{1}')",
-                    departamento.NomeDepartamento, (departamento.CodGerente > 0 ? departamento.CodGerente : (int?)null)
+                    @"INSERT INTO tblPermissao
+                      VALUES ('{0}')",
+                    permissao.Descricao
                 );
             using (contexto = new Contexto())
             {
@@ -36,44 +39,44 @@ namespace TSI___Prefeitura___Aplicacao
             }
         }
 
-        public Departamento buscarFuncionario(int nCodDepartamento)
+        public Permissao buscarPermissao(int nCodPermissao)
         {
             string strComando =
                 string.Format(
                     @"SELECT *
-                      FROM tblDepartamento
-                      WHERE nCodDepartamento = '{0}'
-                    ", nCodDepartamento
+                      FROM tblPermissao
+                      WHERE nCodPermissao = '{0}'
+                    ", nCodPermissao
                 );
             using (contexto = new Contexto())
             {
                 SqlDataReader reader = contexto.executarComandoRetorno(strComando);
-                return this.readerParaDepartamento(reader);
+                return this.readerParaPermissao(reader);
             }
         }
 
-        public List<Departamento> buscarDepartamentos()
+        public List<Permissao> buscarPermissoes()
         {
             string strComando =
                 string.Format(
                     @"SELECT *
-                      FROM tblDepartamento
+                      FROM tblPermissao
                     "
                 );
             using (contexto = new Contexto())
             {
                 SqlDataReader reader = contexto.executarComandoRetorno(strComando);
-                return this.readerParaListaDepartamento(reader);
+                return this.readerParaListaPermissao(reader);
             }
         }
 
-        public void atualizarDepartamento(Departamento departamento)
+        public void atualizarPermissao(Permissao permissao)
         {
             string strComando =
                 string.Format(
-                    @"UPDATE tblDepartamento
-                      SET sNomeDepartamento = '{0}', nCodGerente = '{1}'",
-                    departamento.NomeDepartamento, departamento.CodGerente
+                    @"UPDATE tblPermissao
+                      SET sDescricao = '{0}'",
+                    permissao.Descricao
                 );
             using (contexto = new Contexto())
             {
@@ -81,13 +84,13 @@ namespace TSI___Prefeitura___Aplicacao
             }
         }
 
-        public void apagarDepartamento(int nCodDepartamento)
+        public void apagarPermissao(int nCodPermissao)
         {
             string strComando =
                 string.Format(
-                    @"DELETE FROM tblDepartamento
-                      WHERE nCodDepartamento = '{0}'",
-                    nCodDepartamento
+                    @"DELETE FROM tblPermissao
+                      WHERE nCodPermissao = '{0}'",
+                    nCodPermissao
                 );
             using (contexto = new Contexto())
             {
@@ -95,36 +98,36 @@ namespace TSI___Prefeitura___Aplicacao
             }
         }
 
-        private Departamento readerParaDepartamento(SqlDataReader reader)
+        private Permissao readerParaPermissao(SqlDataReader reader)
         {
-            var departamento = new Departamento();
+            var permissao = new Permissao();
             while (reader.Read())
             {
                 foreach (var propriedade in reader)
                 {
                     if (propriedade.ToString().StartsWith("n"))
                     {
-                        departamento.GetType()
+                        permissao.GetType()
                                    .GetProperty(propriedade.ToString())
-                                   .SetValue(departamento, Convert.ToInt32(reader[propriedade.ToString()]));
+                                   .SetValue(permissao, Convert.ToInt32(reader[propriedade.ToString()]));
                     }
                     else
                     {
-                        departamento.GetType()
+                        permissao.GetType()
                                    .GetProperty(propriedade.ToString())
-                                   .SetValue(departamento, reader[propriedade.ToString()].ToString());
+                                   .SetValue(permissao, reader[propriedade.ToString()].ToString());
                     }
                 }
             }
-            return departamento;
+            return permissao;
         }
 
-        private List<Departamento> readerParaListaDepartamento(SqlDataReader reader)
+        private List<Permissao> readerParaListaPermissao(SqlDataReader reader)
         {
-            var departamentos = new List<Departamento>();
+            var permissaos = new List<Permissao>();
             while (reader.Read())
             {
-                var departamento = new Departamento();
+                var permissao = new Permissao();
 
                 for (int index = 0; index < reader.FieldCount; index++)
                 {
@@ -134,20 +137,20 @@ namespace TSI___Prefeitura___Aplicacao
                     if (reader.GetName(index).ToString().StartsWith("n"))
                     {
                         int result;
-                        departamento.GetType()
+                        permissao.GetType()
                                    .GetProperty(sliced)
-                                   .SetValue(departamento, int.TryParse(reader[property].ToString(), out result) ? result : 0);
+                                   .SetValue(permissao, int.TryParse(reader[property].ToString(), out result) ? result : 0);
                     }
                     else
                     {
-                        departamento.GetType()
+                        permissao.GetType()
                                    .GetProperty(sliced)
-                                   .SetValue(departamento, (reader[property].ToString() == null ? "" : reader[property].ToString()));
+                                   .SetValue(permissao, (reader[property].ToString() == null ? "" : reader[property].ToString()));
                     }
                 }
-                departamentos.Add(departamento);
+                permissaos.Add(permissao);
             }
-            return departamentos;
+            return permissaos;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace TSI___Prefeitura___Aplicacao
 
         public void salvarTarefa(Tarefa tarefa)
         {
-            if (tarefa.nCodTarefa <= 0)
+            if (tarefa.CodTarefa <= 0)
             {
                 this.cadastrarTarefa(tarefa);
             }
@@ -28,7 +28,7 @@ namespace TSI___Prefeitura___Aplicacao
                 string.Format(
                     @"INSERT INTO tblTarefa(sDescricao, nCodOrdem, nCodDepartamento, nStatus)
                       VALUES ('{0}', '{1}', '{2}', '{3}')",
-                    tarefa.sDescricao, tarefa.nCodOrdem, tarefa.nCodDepartamento, tarefa.nStatus
+                    tarefa.Descricao, tarefa.CodOrdem, tarefa.CodDepartamento, tarefa.Status
                 );
             using (contexto = new Contexto())
             {
@@ -74,8 +74,8 @@ namespace TSI___Prefeitura___Aplicacao
                     @"UPDATE tblTarefa
                       SET sDescricao = '{0}', nCodOrdem = '{1}',
                           nCodDepartamento = '{2}', nStatus = '{3}'",
-                    tarefa.sDescricao, tarefa.nCodOrdem,
-                    tarefa.nCodDepartamento, tarefa.nStatus
+                    tarefa.Descricao, tarefa.CodOrdem,
+                    tarefa.CodDepartamento, tarefa.Status
                 );
             using (contexto = new Contexto())
             {

@@ -34,6 +34,7 @@
             this.buscarFuncionarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.departamentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cadastrarDepartamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,18 +62,20 @@
             // cadastrarFuncionarioToolStripMenuItem
             // 
             this.cadastrarFuncionarioToolStripMenuItem.Name = "cadastrarFuncionarioToolStripMenuItem";
-            this.cadastrarFuncionarioToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.cadastrarFuncionarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cadastrarFuncionarioToolStripMenuItem.Text = "Cadastrar";
             this.cadastrarFuncionarioToolStripMenuItem.Click += new System.EventHandler(this.cadastrarFuncionarioToolStripMenuItem_Click);
             // 
             // buscarFuncionarioToolStripMenuItem
             // 
             this.buscarFuncionarioToolStripMenuItem.Name = "buscarFuncionarioToolStripMenuItem";
-            this.buscarFuncionarioToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.buscarFuncionarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.buscarFuncionarioToolStripMenuItem.Text = "Buscar";
             // 
             // departamentosToolStripMenuItem
             // 
+            this.departamentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cadastrarDepartamentoToolStripMenuItem});
             this.departamentosToolStripMenuItem.Name = "departamentosToolStripMenuItem";
             this.departamentosToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.departamentosToolStripMenuItem.Text = "Departamentos";
@@ -82,6 +85,13 @@
             this.ordensToolStripMenuItem.Name = "ordensToolStripMenuItem";
             this.ordensToolStripMenuItem.Size = new System.Drawing.Size(113, 20);
             this.ordensToolStripMenuItem.Text = "Ordens de serviço";
+            // 
+            // cadastrarDepartamentoToolStripMenuItem
+            // 
+            this.cadastrarDepartamentoToolStripMenuItem.Name = "cadastrarDepartamentoToolStripMenuItem";
+            this.cadastrarDepartamentoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cadastrarDepartamentoToolStripMenuItem.Text = "Cadastrar";
+            this.cadastrarDepartamentoToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -110,6 +120,7 @@
         private System.Windows.Forms.ToolStripMenuItem ordensToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadastrarFuncionarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buscarFuncionarioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cadastrarDepartamentoToolStripMenuItem;
     }
 }
 

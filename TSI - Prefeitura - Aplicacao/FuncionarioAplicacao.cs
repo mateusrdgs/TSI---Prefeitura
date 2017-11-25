@@ -12,7 +12,7 @@ namespace TSI___Prefeitura___Aplicacao
 
         public void salvarFuncionario(Funcionario funcionario)
         {   
-            if(funcionario.nCodFuncionario <= 0)
+            if(funcionario.CodFuncionario <= 0)
             {
                 this.cadastrarFuncionario(funcionario);
             }
@@ -26,10 +26,16 @@ namespace TSI___Prefeitura___Aplicacao
         {
             string strComando =
                 string.Format(
-                    @"INSERT INTO tblFuncionario(sNomeCompleto, sCPF, sEmail, sTelefone, sEndereco, nCodPermissao, nCodDepartamento)
-                      VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}')",
-                    funcionario.sNomeCompleto, funcionario.sCPF, funcionario.sEmail,
-                    funcionario.sTelefone, funcionario.nCodPermissao, funcionario.nCodDepartamento
+                    @"INSERT INTO tblFuncionario
+                      VALUES (
+                        '{0}', '{1}', '{2}', '{3}',
+                        '{4}', '{5}', '{6}', '{7}',
+                        '{8}', '{9}', '{10}', '{11}'
+                    )",
+                    funcionario.NomeCompleto, funcionario.CPF, funcionario.Email, funcionario.Telefone,
+                    funcionario.Rua, funcionario.Numero, funcionario.CEP, funcionario.Bairro,
+                    funcionario.Cidade, funcionario.Estado, funcionario.CodPermissao,
+                    funcionario.CodDepartamento
                 );
             using(contexto = new Contexto())
             {
@@ -50,6 +56,24 @@ namespace TSI___Prefeitura___Aplicacao
             {
                 SqlDataReader reader = contexto.executarComandoRetorno(strComando);
                 return this.readerParaFuncionario(reader);
+            }
+        }
+
+        public List<Funcionario> buscarGerentesDisponiveis()
+        {
+            string strComando =
+                string.Format(
+                    @"SELECT func.nCodFuncionario, func.sNomeCompleto
+                      FROM tblFuncionario as func
+                      RIGHT JOIN tblDepartamento as dept
+                      ON func.nCodFuncionario != dept.nCodGerente
+                      WHERE func.nCodPermissao = 2
+                    "
+                );
+            using (contexto = new Contexto())
+            {
+                SqlDataReader reader = contexto.executarComandoRetorno(strComando);
+                return this.readerParaListaFuncionario(reader);
             }
         }
 
@@ -75,8 +99,8 @@ namespace TSI___Prefeitura___Aplicacao
                     @"UPDATE tblFuncionario
                       SET sNomeCompleto = '{0}', sCPF = '{1}', sEmail = '{2}', sTelefone = '{3}',
                           sEndereco = '{4}', nCodPermissao = '{5}', nCodDepartamento = '{6}'",            
-                    funcionario.sNomeCompleto, funcionario.sCPF, funcionario.sEmail,
-                    funcionario.sTelefone, funcionario.nCodPermissao, funcionario.nCodDepartamento
+                    funcionario.NomeCompleto, funcionario.CPF, funcionario.Email,
+                    funcionario.Telefone, funcionario.CodPermissao, funcionario.CodDepartamento
                 );
             using (contexto = new Contexto())
             {
@@ -128,19 +152,23 @@ namespace TSI___Prefeitura___Aplicacao
             while (reader.Read())
             {
                 var funcionario = new Funcionario();
-                foreach (var propriedade in reader)
+                for (int index = 0; index < reader.FieldCount; index++)
                 {
-                    if (propriedade.ToString().StartsWith("n"))
+                    string property = reader.GetName(index).ToString(),
+                           sliced = property.Remove(0, 1);
+
+                    if (reader.GetName(index).ToString().StartsWith("n"))
                     {
+                        int result;
                         funcionario.GetType()
-                                   .GetProperty(propriedade.ToString())
-                                   .SetValue(funcionario, Convert.ToInt32(reader[propriedade.ToString()]));
+                                   .GetProperty(sliced)
+                                   .SetValue(funcionario, int.TryParse(reader[property].ToString(), out result) ? result : 0);
                     }
                     else
                     {
                         funcionario.GetType()
-                                   .GetProperty(propriedade.ToString())
-                                   .SetValue(funcionario, reader[propriedade.ToString()].ToString());
+                                   .GetProperty(sliced)
+                                   .SetValue(funcionario, (reader[property].ToString() == null ? "" : reader[property].ToString()));
                     }
                 }
                 funcionarios.Add(funcionario);

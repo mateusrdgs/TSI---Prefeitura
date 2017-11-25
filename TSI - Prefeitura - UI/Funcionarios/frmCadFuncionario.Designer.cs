@@ -54,6 +54,7 @@
             this.lblPermissao = new System.Windows.Forms.Label();
             this.cbDepartamento = new System.Windows.Forms.ComboBox();
             this.lblDepartamento = new System.Windows.Forms.Label();
+            this.btnSalvar = new System.Windows.Forms.Button();
             this.gbDadosPessoais.SuspendLayout();
             this.gbDadosCorporativos.SuspendLayout();
             this.SuspendLayout();
@@ -94,7 +95,8 @@
             this.cbEstado.Location = new System.Drawing.Point(6, 466);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(330, 28);
-            this.cbEstado.TabIndex = 20;
+            this.cbEstado.TabIndex = 10;
+            this.cbEstado.Tag = "Estado";
             // 
             // lblEstado
             // 
@@ -119,7 +121,8 @@
             this.tbCidade.Location = new System.Drawing.Point(6, 399);
             this.tbCidade.Name = "tbCidade";
             this.tbCidade.Size = new System.Drawing.Size(420, 26);
-            this.tbCidade.TabIndex = 17;
+            this.tbCidade.TabIndex = 9;
+            this.tbCidade.Tag = "Cidade";
             // 
             // lblBairro
             // 
@@ -135,14 +138,16 @@
             this.tbBairro.Location = new System.Drawing.Point(7, 337);
             this.tbBairro.Name = "tbBairro";
             this.tbBairro.Size = new System.Drawing.Size(419, 26);
-            this.tbBairro.TabIndex = 15;
+            this.tbBairro.TabIndex = 8;
+            this.tbBairro.Tag = "Bairro";
             // 
             // mtbCep
             // 
             this.mtbCep.Location = new System.Drawing.Point(185, 274);
             this.mtbCep.Name = "mtbCep";
             this.mtbCep.Size = new System.Drawing.Size(151, 26);
-            this.mtbCep.TabIndex = 14;
+            this.mtbCep.TabIndex = 7;
+            this.mtbCep.Tag = "CEP";
             // 
             // lblCep
             // 
@@ -167,7 +172,8 @@
             this.tbNumero.Location = new System.Drawing.Point(7, 274);
             this.tbNumero.Name = "tbNumero";
             this.tbNumero.Size = new System.Drawing.Size(147, 26);
-            this.tbNumero.TabIndex = 11;
+            this.tbNumero.TabIndex = 6;
+            this.tbNumero.Tag = "Número";
             // 
             // lblRua
             // 
@@ -183,14 +189,16 @@
             this.tbRua.Location = new System.Drawing.Point(6, 213);
             this.tbRua.Name = "tbRua";
             this.tbRua.Size = new System.Drawing.Size(427, 26);
-            this.tbRua.TabIndex = 9;
+            this.tbRua.TabIndex = 5;
+            this.tbRua.Tag = "Rua";
             // 
             // mtbTelefone
             // 
             this.mtbTelefone.Location = new System.Drawing.Point(243, 104);
             this.mtbTelefone.Name = "mtbTelefone";
             this.mtbTelefone.Size = new System.Drawing.Size(190, 26);
-            this.mtbTelefone.TabIndex = 8;
+            this.mtbTelefone.TabIndex = 3;
+            this.mtbTelefone.Tag = "Telefone";
             // 
             // lblTelefone
             // 
@@ -215,14 +223,16 @@
             this.tbEmail.Location = new System.Drawing.Point(6, 158);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(427, 26);
-            this.tbEmail.TabIndex = 5;
+            this.tbEmail.TabIndex = 4;
+            this.tbEmail.Tag = "Email";
             // 
             // mtbCpf
             // 
             this.mtbCpf.Location = new System.Drawing.Point(6, 104);
             this.mtbCpf.Name = "mtbCpf";
             this.mtbCpf.Size = new System.Drawing.Size(221, 26);
-            this.mtbCpf.TabIndex = 4;
+            this.mtbCpf.TabIndex = 2;
+            this.mtbCpf.Tag = "CPF";
             // 
             // lblCpf
             // 
@@ -247,7 +257,8 @@
             this.tbNome.Location = new System.Drawing.Point(6, 52);
             this.tbNome.Name = "tbNome";
             this.tbNome.Size = new System.Drawing.Size(427, 26);
-            this.tbNome.TabIndex = 0;
+            this.tbNome.TabIndex = 1;
+            this.tbNome.Tag = "Nome completo";
             // 
             // gbDadosCorporativos
             // 
@@ -259,7 +270,7 @@
             this.gbDadosCorporativos.Location = new System.Drawing.Point(457, 12);
             this.gbDadosCorporativos.Name = "gbDadosCorporativos";
             this.gbDadosCorporativos.Size = new System.Drawing.Size(311, 341);
-            this.gbDadosCorporativos.TabIndex = 1;
+            this.gbDadosCorporativos.TabIndex = 11;
             this.gbDadosCorporativos.TabStop = false;
             this.gbDadosCorporativos.Text = "Dados corporativos";
             // 
@@ -269,7 +280,8 @@
             this.cbPermissao.Location = new System.Drawing.Point(10, 117);
             this.cbPermissao.Name = "cbPermissao";
             this.cbPermissao.Size = new System.Drawing.Size(293, 28);
-            this.cbPermissao.TabIndex = 3;
+            this.cbPermissao.TabIndex = 13;
+            this.cbPermissao.Tag = "Permissão";
             // 
             // lblPermissao
             // 
@@ -286,7 +298,8 @@
             this.cbDepartamento.Location = new System.Drawing.Point(10, 49);
             this.cbDepartamento.Name = "cbDepartamento";
             this.cbDepartamento.Size = new System.Drawing.Size(293, 28);
-            this.cbDepartamento.TabIndex = 1;
+            this.cbDepartamento.TabIndex = 12;
+            this.cbDepartamento.Tag = "Departamento";
             // 
             // lblDepartamento
             // 
@@ -297,16 +310,30 @@
             this.lblDepartamento.TabIndex = 0;
             this.lblDepartamento.Text = "Departamento";
             // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.Location = new System.Drawing.Point(693, 492);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 33);
+            this.btnSalvar.TabIndex = 14;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            // 
             // frmCadFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 537);
+            this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.gbDadosCorporativos);
             this.Controls.Add(this.gbDadosPessoais);
             this.Name = "frmCadFuncionario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar funcionário";
+            this.Load += new System.EventHandler(this.frmCadFuncionario_Load);
+            this.Shown += new System.EventHandler(this.frmCadFuncionario_Shown);
             this.gbDadosPessoais.ResumeLayout(false);
             this.gbDadosPessoais.PerformLayout();
             this.gbDadosCorporativos.ResumeLayout(false);
@@ -343,5 +370,6 @@
         private System.Windows.Forms.Label lblPermissao;
         private System.Windows.Forms.ComboBox cbDepartamento;
         private System.Windows.Forms.Label lblDepartamento;
+        private System.Windows.Forms.Button btnSalvar;
     }
 }

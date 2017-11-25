@@ -43,6 +43,7 @@
     <Compile Include="Departamento.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="Ordem.cs" />
+    <Compile Include="Permissao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tarefa.cs" />
   </ItemGroup>
