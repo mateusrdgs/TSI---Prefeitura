@@ -3,16 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSI - Prefeitura - UI", "TSI - Prefeitura\TSI - Prefeitura - UI.csproj", "{8C0BDC22-90B8-4BB9-91DC-B8E38EBCE8B2}"
-	ProjectSection(ProjectDependencies) = postProject
-		{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1} = {C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSI - Prefeitura - Repositorio", "TSI - Prefeitura - Repositorio\TSI - Prefeitura - Repositorio.csproj", "{0E42D988-D5D2-4A34-A469-E2CF7C1529F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSI - Prefeitura - Dominio", "TSI - Prefeitura - Negocio\TSI - Prefeitura - Dominio.csproj", "{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSI - Prefeitura - Aplicacao", "TSI - Prefeitura - Aplicacao\TSI - Prefeitura - Aplicacao.csproj", "{360063E3-9123-4139-B844-0BD5838D3639}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSI - Prefeitura - Dominio", "TSI - Prefeitura - Dominio\TSI - Prefeitura - Dominio.csproj", "{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TSI - Prefeitura - UI", "TSI - Prefeitura - UI\TSI - Prefeitura - UI.csproj", "{8C0BDC22-90B8-4BB9-91DC-B8E38EBCE8B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,22 +17,22 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8C0BDC22-90B8-4BB9-91DC-B8E38EBCE8B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8C0BDC22-90B8-4BB9-91DC-B8E38EBCE8B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8C0BDC22-90B8-4BB9-91DC-B8E38EBCE8B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8C0BDC22-90B8-4BB9-91DC-B8E38EBCE8B2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0E42D988-D5D2-4A34-A469-E2CF7C1529F2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0E42D988-D5D2-4A34-A469-E2CF7C1529F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E42D988-D5D2-4A34-A469-E2CF7C1529F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E42D988-D5D2-4A34-A469-E2CF7C1529F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{360063E3-9123-4139-B844-0BD5838D3639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{360063E3-9123-4139-B844-0BD5838D3639}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{360063E3-9123-4139-B844-0BD5838D3639}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{360063E3-9123-4139-B844-0BD5838D3639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C0BDC22-90B8-4BB9-91DC-B8E38EBCE8B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C0BDC22-90B8-4BB9-91DC-B8E38EBCE8B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C0BDC22-90B8-4BB9-91DC-B8E38EBCE8B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C0BDC22-90B8-4BB9-91DC-B8E38EBCE8B2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

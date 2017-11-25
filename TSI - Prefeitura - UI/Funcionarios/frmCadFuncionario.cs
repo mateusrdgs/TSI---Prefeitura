@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TSI___Prefeitura
+namespace TSI___Prefeitura.Funcionarios
 {
-    public partial class Form1 : Form
+    public partial class frmCadFuncionario : Form
     {
-        public Form1()
+        public frmCadFuncionario()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            
         }
     }
 }

@@ -47,8 +47,8 @@
     <Compile Include="TarefaAplicacao.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TSI - Prefeitura - Negocio\TSI - Prefeitura - Dominio.csproj">
-      <Project>{c52ce8d1-dfc5-45df-b28b-9bd0b3ca74c1}</Project>
+    <ProjectReference Include="..\TSI - Prefeitura - Dominio\TSI - Prefeitura - Dominio.csproj">
+      <Project>{C52CE8D1-DFC5-45DF-B28B-9BD0B3CA74C1}</Project>
       <Name>TSI - Prefeitura - Dominio</Name>
     </ProjectReference>
     <ProjectReference Include="..\TSI - Prefeitura - Repositorio\TSI - Prefeitura - Repositorio.csproj">
