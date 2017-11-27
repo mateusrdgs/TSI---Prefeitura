@@ -92,7 +92,7 @@
             // cbEstado
             // 
             this.cbEstado.FormattingEnabled = true;
-            this.cbEstado.Location = new System.Drawing.Point(6, 466);
+            this.cbEstado.Location = new System.Drawing.Point(7, 445);
             this.cbEstado.Name = "cbEstado";
             this.cbEstado.Size = new System.Drawing.Size(330, 28);
             this.cbEstado.TabIndex = 10;
@@ -101,7 +101,7 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(2, 443);
+            this.lblEstado.Location = new System.Drawing.Point(3, 422);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(60, 20);
             this.lblEstado.TabIndex = 19;
@@ -110,7 +110,7 @@
             // lblCidade
             // 
             this.lblCidade.AutoSize = true;
-            this.lblCidade.Location = new System.Drawing.Point(2, 376);
+            this.lblCidade.Location = new System.Drawing.Point(3, 363);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(59, 20);
             this.lblCidade.TabIndex = 18;
@@ -118,7 +118,7 @@
             // 
             // tbCidade
             // 
-            this.tbCidade.Location = new System.Drawing.Point(6, 399);
+            this.tbCidade.Location = new System.Drawing.Point(7, 386);
             this.tbCidade.Name = "tbCidade";
             this.tbCidade.Size = new System.Drawing.Size(420, 26);
             this.tbCidade.TabIndex = 9;
@@ -127,7 +127,7 @@
             // lblBairro
             // 
             this.lblBairro.AutoSize = true;
-            this.lblBairro.Location = new System.Drawing.Point(3, 314);
+            this.lblBairro.Location = new System.Drawing.Point(8, 308);
             this.lblBairro.Name = "lblBairro";
             this.lblBairro.Size = new System.Drawing.Size(51, 20);
             this.lblBairro.TabIndex = 16;
@@ -135,7 +135,7 @@
             // 
             // tbBairro
             // 
-            this.tbBairro.Location = new System.Drawing.Point(7, 337);
+            this.tbBairro.Location = new System.Drawing.Point(7, 331);
             this.tbBairro.Name = "tbBairro";
             this.tbBairro.Size = new System.Drawing.Size(419, 26);
             this.tbBairro.TabIndex = 8;
@@ -186,9 +186,9 @@
             // 
             // tbRua
             // 
-            this.tbRua.Location = new System.Drawing.Point(6, 213);
+            this.tbRua.Location = new System.Drawing.Point(7, 213);
             this.tbRua.Name = "tbRua";
-            this.tbRua.Size = new System.Drawing.Size(427, 26);
+            this.tbRua.Size = new System.Drawing.Size(426, 26);
             this.tbRua.TabIndex = 5;
             this.tbRua.Tag = "Rua";
             // 
@@ -262,6 +262,7 @@
             // 
             // gbDadosCorporativos
             // 
+            this.gbDadosCorporativos.Controls.Add(this.btnSalvar);
             this.gbDadosCorporativos.Controls.Add(this.cbPermissao);
             this.gbDadosCorporativos.Controls.Add(this.lblPermissao);
             this.gbDadosCorporativos.Controls.Add(this.cbDepartamento);
@@ -269,7 +270,7 @@
             this.gbDadosCorporativos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbDadosCorporativos.Location = new System.Drawing.Point(457, 12);
             this.gbDadosCorporativos.Name = "gbDadosCorporativos";
-            this.gbDadosCorporativos.Size = new System.Drawing.Size(311, 341);
+            this.gbDadosCorporativos.Size = new System.Drawing.Size(311, 513);
             this.gbDadosCorporativos.TabIndex = 11;
             this.gbDadosCorporativos.TabStop = false;
             this.gbDadosCorporativos.Text = "Dados corporativos";
@@ -277,7 +278,7 @@
             // cbPermissao
             // 
             this.cbPermissao.FormattingEnabled = true;
-            this.cbPermissao.Location = new System.Drawing.Point(10, 117);
+            this.cbPermissao.Location = new System.Drawing.Point(12, 104);
             this.cbPermissao.Name = "cbPermissao";
             this.cbPermissao.Size = new System.Drawing.Size(293, 28);
             this.cbPermissao.TabIndex = 13;
@@ -286,7 +287,7 @@
             // lblPermissao
             // 
             this.lblPermissao.AutoSize = true;
-            this.lblPermissao.Location = new System.Drawing.Point(6, 94);
+            this.lblPermissao.Location = new System.Drawing.Point(6, 81);
             this.lblPermissao.Name = "lblPermissao";
             this.lblPermissao.Size = new System.Drawing.Size(83, 20);
             this.lblPermissao.TabIndex = 2;
@@ -313,7 +314,7 @@
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(693, 492);
+            this.btnSalvar.Location = new System.Drawing.Point(228, 474);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 33);
             this.btnSalvar.TabIndex = 14;
@@ -326,7 +327,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 537);
-            this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.gbDadosCorporativos);
             this.Controls.Add(this.gbDadosPessoais);
             this.Name = "frmCadFuncionario";

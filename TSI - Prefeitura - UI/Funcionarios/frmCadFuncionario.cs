@@ -16,7 +16,6 @@ namespace TSI___Prefeitura.Funcionarios
         FuncionarioAplicacao funcionarioAplicacao;
         DepartamentoAplicacao departamentoAplicacao;
         PermissaoAplicacao permissaoAplicacao;
-        ControlesIteradores iteradores = new ControlesIteradores();
 
         public frmCadFuncionario()
         {
@@ -33,8 +32,8 @@ namespace TSI___Prefeitura.Funcionarios
             bool camposPreenchidos = true;
             foreach (GroupBox groupbox in this.Controls.OfType<GroupBox>().OrderBy(c => c.TabIndex))
             {
-                string tag = iteradores.checharCampoVazio(groupbox);
-                if(tag != string.Empty) 
+                string tag = ControlesIteradores.checharCampoVazio(groupbox);
+                if(tag != "Departamento" && tag != string.Empty) 
                 {
                     MessageBox.Show("Campo '" + tag + "' vazio!", "Aviso");
                     camposPreenchidos = false;
@@ -53,8 +52,10 @@ namespace TSI___Prefeitura.Funcionarios
                        cidade = tbCidade.Text,
                        estado = (cbEstado.SelectedItem as ComboBoxItem).Value.ToString();
                 int numero = Convert.ToInt32(tbNumero.Text),
-                    departamento = Convert.ToInt32((cbDepartamento.SelectedItem as ComboBoxItem).Value.ToString()),
+                    departamento = 0,
                     permissao = Convert.ToInt32((cbPermissao.SelectedItem as ComboBoxItem).Value.ToString());
+                bool departamentoEscolhido = cbDepartamento.SelectedIndex > 0 ? (cbDepartamento.SelectedItem as ComboBoxItem).Value.ToString() != "" : false,
+                     departamentoValido = int.TryParse((departamentoEscolhido ? (cbDepartamento.SelectedItem as ComboBoxItem).Value.ToString() : ""), out departamento);
                 this.funcionario = new Funcionario(
                     nomeCompleto, cpf, email,
                     telefone, rua, numero,
@@ -62,31 +63,43 @@ namespace TSI___Prefeitura.Funcionarios
                     estado, permissao, departamento
                 );
                 this.funcionarioAplicacao = new FuncionarioAplicacao();
-                funcionarioAplicacao.salvarFuncionario(this.funcionario);
-                MessageBox.Show("Funcionário salvo com sucesso!", "Aviso");
-                foreach (GroupBox groupbox in this.Controls.OfType<GroupBox>().OrderBy(c => c.TabIndex))
+                try
                 {
-                    iteradores.limparControles(groupbox);
+                    funcionarioAplicacao.salvarFuncionario(this.funcionario);
+                    MessageBox.Show("Funcionário salvo com sucesso!", "Aviso");
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message, "Erro");
+                }
+                finally
+                {
+                    foreach (GroupBox groupbox in this.Controls.OfType<GroupBox>().OrderBy(c => c.TabIndex))
+                    {
+                        ControlesIteradores.limparControles(groupbox);
+                    }
                 }
             }
         }
 
         private void frmCadFuncionario_Shown(object sender, EventArgs e)
         {
+            this.departamentoAplicacao = new DepartamentoAplicacao();
+            this.permissaoAplicacao = new PermissaoAplicacao();
+
             this.cbEstado.Items.Add(
                 new ComboBoxItem(
                     "Minas Gerais",
                     1
                 )
             );
-
             this.cbEstado.Items.Add(
                 new ComboBoxItem(
                     "São Paulo",
                     2
                 )
             );
-
             this.cbEstado.Items.Add(
                 new ComboBoxItem(
                     "Rio de Janeiro",
@@ -94,28 +107,33 @@ namespace TSI___Prefeitura.Funcionarios
                 )
             );
 
-            this.departamentoAplicacao = new DepartamentoAplicacao();
-            List<Departamento> departamentos = this.departamentoAplicacao.buscarDepartamentos();
-            foreach (var departamento in departamentos)
-            {   
-                cbDepartamento.Items.Add(
-                    new ComboBoxItem(
-                        departamento.NomeDepartamento,
-                        departamento.CodDepartamento
-                    )
-                );
-            }
-
-            this.permissaoAplicacao = new PermissaoAplicacao();
-            List<Permissao> permissoes = this.permissaoAplicacao.buscarPermissoes();
-            foreach (var permissao in permissoes)
+            try
             {
-                cbPermissao.Items.Add(
-                    new ComboBoxItem(
-                        permissao.Descricao,
-                        permissao.CodPermissao
-                    )
-                );
+                List<Departamento> departamentos = this.departamentoAplicacao.buscarDepartamentos();
+                foreach (var departamento in departamentos)
+                {
+                    cbDepartamento.Items.Add(
+                        new ComboBoxItem(
+                            departamento.NomeDepartamento,
+                            departamento.CodDepartamento
+                        )
+                    );
+                }
+                List<Permissao> permissoes = this.permissaoAplicacao.buscarPermissoes();
+                foreach (var permissao in permissoes)
+                {
+                    cbPermissao.Items.Add(
+                        new ComboBoxItem(
+                            permissao.Descricao,
+                            permissao.CodPermissao
+                        )
+                    );
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro");
+                this.Dispose();
             }
         }
     }

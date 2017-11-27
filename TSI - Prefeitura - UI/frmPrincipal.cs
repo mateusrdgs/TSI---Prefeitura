@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using TSI___Prefeitura.Departamentos;
 using TSI___Prefeitura.Funcionarios;
+using TSI___Prefeitura.Ordens_de_servico;
 
 namespace TSI___Prefeitura
 {
@@ -9,6 +10,8 @@ namespace TSI___Prefeitura
     {
         frmCadFuncionario frmCadFuncionario;
         frmCadDepartamento frmCadDepartamento;
+        FrmCadOrdemServico frmCadOrdemServico;
+        FrmBuscarOrdem frmBuscarOrdem;
 
         public frmPrincipal()
         {
@@ -32,7 +35,8 @@ namespace TSI___Prefeitura
                 this.frmCadFuncionario.Show();
             }
             else
-            {   
+            {
+                this.frmCadFuncionario.WindowState = FormWindowState.Maximized;
                 this.frmCadFuncionario.Show();
             }
         }
@@ -50,7 +54,44 @@ namespace TSI___Prefeitura
             }
             else
             {
+                this.frmCadDepartamento.WindowState = FormWindowState.Maximized;
                 this.frmCadDepartamento.Show();
+            }
+        }
+
+        private void cadastrarOrdemServicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.frmCadOrdemServico == null || this.frmCadOrdemServico.IsDisposed)
+            {
+                this.frmCadOrdemServico = new FrmCadOrdemServico();
+                this.frmCadOrdemServico.MdiParent = this;
+                this.frmCadOrdemServico.MaximizeBox = false;
+                this.frmCadOrdemServico.MinimizeBox = false;
+                this.frmCadOrdemServico.WindowState = FormWindowState.Maximized;
+                this.frmCadOrdemServico.Show();
+            }
+            else
+            {
+                this.frmCadOrdemServico.WindowState = FormWindowState.Maximized;
+                this.frmCadOrdemServico.Show();
+            }
+        }
+
+        private void buscarOrdemServicoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.frmBuscarOrdem == null || this.frmBuscarOrdem.IsDisposed)
+            {
+                this.frmBuscarOrdem = new FrmBuscarOrdem();
+                this.frmBuscarOrdem.MdiParent = this;
+                this.frmBuscarOrdem.MaximizeBox = false;
+                this.frmBuscarOrdem.MinimizeBox = false;
+                this.frmBuscarOrdem.WindowState = FormWindowState.Maximized;
+                this.frmBuscarOrdem.Show();
+            }
+            else
+            {
+                this.frmBuscarOrdem.WindowState = FormWindowState.Maximized;
+                this.frmBuscarOrdem.Show();
             }
         }
     }

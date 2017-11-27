@@ -68,6 +68,31 @@
     </Compile>
     <Compile Include="Helpers\ComboBoxItem.cs" />
     <Compile Include="Helpers\ControlesIteradores.cs" />
+    <Compile Include="Helpers\Debouncer.cs" />
+    <Compile Include="Ordens de servico\FrmBuscarOrdem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ordens de servico\FrmBuscarOrdem.Designer.cs">
+      <DependentUpon>FrmBuscarOrdem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ordens de servico\FrmCadOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ordens de servico\FrmCadOrdemServico.Designer.cs">
+      <DependentUpon>FrmCadOrdemServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ordens de servico\FrmCadTarefa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ordens de servico\FrmCadTarefa.Designer.cs">
+      <DependentUpon>FrmCadTarefa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ordens de servico\FrmGerenciarOrdem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ordens de servico\FrmGerenciarOrdem.Designer.cs">
+      <DependentUpon>FrmGerenciarOrdem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Departamentos\frmCadDepartamento.resx">
@@ -78,6 +103,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Funcionarios\frmCadFuncionario.resx">
       <DependentUpon>frmCadFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ordens de servico\FrmBuscarOrdem.resx">
+      <DependentUpon>FrmBuscarOrdem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ordens de servico\FrmCadOrdemServico.resx">
+      <DependentUpon>FrmCadOrdemServico.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ordens de servico\FrmCadTarefa.resx">
+      <DependentUpon>FrmCadTarefa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ordens de servico\FrmGerenciarOrdem.resx">
+      <DependentUpon>FrmGerenciarOrdem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -111,9 +148,7 @@
       <Name>TSI - Prefeitura - Dominio</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Ordens de servico\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

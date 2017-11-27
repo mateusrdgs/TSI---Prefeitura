@@ -31,6 +31,24 @@ namespace TSI___Prefeitura___Repositorio
 
             comandoSql.ExecuteNonQuery();
         }
+        public void executarComando(string strCommand, Dictionary<string, dynamic> parametros)
+        {
+            if (this.checarConexao())
+            {
+                this.abrirConexao();
+            }
+            var command = new SqlCommand
+            {
+                Connection = this.conexao,
+                CommandText = strCommand
+            };
+            foreach (KeyValuePair<string, dynamic> parametro in parametros)
+            {
+                command.Parameters.AddWithValue(parametro.Key, (parametro.Value == null ? DBNull.Value : parametro.Value));
+            };
+            command.ExecuteNonQuery();
+        }
+
 
         public SqlDataReader executarComandoRetorno(string comando)
         {

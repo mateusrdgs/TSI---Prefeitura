@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace TSI___Prefeitura.Métodos
 {
-    public class ControlesIteradores
+    public static class ControlesIteradores
     {
-        public void limparControles(Control control)
+        public static void limparControles(Control control)
         {
             foreach(Control child in control.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
             {
@@ -43,7 +43,7 @@ namespace TSI___Prefeitura.Métodos
             }
         }
 
-        public string checharCampoVazio(Control control)
+        public static string checharCampoVazio(Control control)
         {
             foreach(Control child in control.Controls.Cast<Control>().OrderBy(c => c.TabIndex))
             {

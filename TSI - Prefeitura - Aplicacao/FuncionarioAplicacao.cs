@@ -28,18 +28,27 @@ namespace TSI___Prefeitura___Aplicacao
                 string.Format(
                     @"INSERT INTO tblFuncionario
                       VALUES (
-                        '{0}', '{1}', '{2}', '{3}',
-                        '{4}', '{5}', '{6}', '{7}',
-                        '{8}', '{9}', '{10}', '{11}'
-                    )",
-                    funcionario.NomeCompleto, funcionario.CPF, funcionario.Email, funcionario.Telefone,
-                    funcionario.Rua, funcionario.Numero, funcionario.CEP, funcionario.Bairro,
-                    funcionario.Cidade, funcionario.Estado, funcionario.CodPermissao,
-                    funcionario.CodDepartamento
+                        @sNomeCompleto, @sCPF, @sEmail, @sTelefone,
+                        @sRua, @nNumero, @sCEP, @sBairro,
+                        @sCidade, @sEstado, @nCodPermissao, @nCodDepartamento
+                    )"
                 );
             using(contexto = new Contexto())
             {
-                contexto.executarComando(strComando);
+                Dictionary<string, dynamic> parametros = new Dictionary<string, dynamic>();
+                parametros.Add("@sNomeCompleto", funcionario.NomeCompleto);
+                parametros.Add("@sCPF", funcionario.CPF);
+                parametros.Add("@sEmail", funcionario.Email);
+                parametros.Add("@sTelefone", funcionario.Telefone);
+                parametros.Add("@sRua", funcionario.Rua);
+                parametros.Add("@nNumero", funcionario.Numero);
+                parametros.Add("@sCEP", funcionario.CEP);
+                parametros.Add("@sBairro", funcionario.Bairro);
+                parametros.Add("@sCidade", funcionario.Cidade);
+                parametros.Add("@sEstado", funcionario.Estado);
+                parametros.Add("@nCodPermissao", funcionario.CodPermissao);
+                parametros.Add("@nCodDepartamento", null);
+                contexto.executarComando(strComando, parametros);
             }
         }
 

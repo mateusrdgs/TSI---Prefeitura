@@ -10,7 +10,7 @@ namespace TSI___Prefeitura___Aplicacao
     {
         private Contexto contexto;
 
-        public void salvarDepartamento(Ordem ordem)
+        public void salvarOrdem(Ordem ordem)
         {
             if (ordem.CodOrdem <= 0)
             {
@@ -26,9 +26,10 @@ namespace TSI___Prefeitura___Aplicacao
         {
             string strComando =
                 string.Format(
-                    @"INSERT INTO tblFuncionario(sNomeDepartamento, nCodGerente)
-                      VALUES ('{0}', '{1}')",
-                    ordem.Descricao, ordem.CodFuncionario
+                    @"INSERT INTO tblOrdem
+                      VALUES ('{0}', '{1}', '{2}', {3}, '{4}')",
+                      ordem.Descricao, ordem.DataAbertura,
+                      ordem.DataFechamento, ordem.Status, ordem.CodFuncionario
                 );
             using (contexto = new Contexto())
             {
@@ -72,8 +73,13 @@ namespace TSI___Prefeitura___Aplicacao
             string strComando =
                 string.Format(
                     @"UPDATE tblOrdem
-                      SET sDescricao = '{0}', nCodFuncionario = '{1}'",
-                    ordem.Descricao, ordem.CodFuncionario
+                      SET sDescricao = '{0}', dDataAbertura = '{1}',
+                          dDataFechamento = '{2}', nStatus = '{3}',
+                          nStatus = '{4}', nCodFuncionario = '{5}'
+                      WHERE nCodOrdem = '{6}'",
+                      ordem.Descricao, ordem.DataAbertura,
+                      ordem.DataFechamento, ordem.Status,
+                      ordem.CodFuncionario, ordem.CodOrdem
                 );
             using (contexto = new Contexto())
             {
@@ -99,20 +105,31 @@ namespace TSI___Prefeitura___Aplicacao
         {
             var ordem = new Ordem();
             while (reader.Read())
-            {
-                foreach (var propriedade in reader)
+            {   
+                for (int index = 0; index < reader.FieldCount; index++)
                 {
-                    if (propriedade.ToString().StartsWith("n"))
+                    string property = reader.GetName(index).ToString(),
+                           sliced = property.Remove(0, 1);
+
+                    if (reader.GetName(index).ToString().StartsWith("n"))
                     {
+                        int result;
                         ordem.GetType()
-                             .GetProperty(propriedade.ToString())
-                             .SetValue(ordem, Convert.ToInt32(reader[propriedade.ToString()]));
+                                   .GetProperty(sliced)
+                                   .SetValue(ordem, int.TryParse(reader[property].ToString(), out result) ? result : 0);
+                    }
+                    else if (reader.GetName(index).ToString().StartsWith("d"))
+                    {
+                        DateTime result;
+                        ordem.GetType()
+                                   .GetProperty(sliced)
+                                   .SetValue(ordem, DateTime.TryParse(reader[property].ToString(), out result) ? result : DateTime.Now);
                     }
                     else
                     {
                         ordem.GetType()
-                             .GetProperty(propriedade.ToString())
-                             .SetValue(ordem, reader[propriedade.ToString()].ToString());
+                                   .GetProperty(sliced)
+                                   .SetValue(ordem, (reader[property].ToString() == null ? "" : reader[property].ToString()));
                     }
                 }
             }
@@ -125,21 +142,33 @@ namespace TSI___Prefeitura___Aplicacao
             while (reader.Read())
             {
                 var ordem = new Ordem();
-                foreach (var propriedade in reader)
+                for (int index = 0; index < reader.FieldCount; index++)
                 {
-                    if (propriedade.ToString().StartsWith("n"))
+                    string property = reader.GetName(index).ToString(),
+                           sliced = property.Remove(0, 1);
+
+                    if (reader.GetName(index).ToString().StartsWith("n"))
                     {
+                        int result;
                         ordem.GetType()
-                             .GetProperty(propriedade.ToString())
-                             .SetValue(ordem, Convert.ToInt32(reader[propriedade.ToString()]));
+                                   .GetProperty(sliced)
+                                   .SetValue(ordem, int.TryParse(reader[property].ToString(), out result) ? result : 0);
+                    }
+                    else if (reader.GetName(index).ToString().StartsWith("d"))
+                    {
+                        DateTime result;
+                        ordem.GetType()
+                                   .GetProperty(sliced)
+                                   .SetValue(ordem, DateTime.TryParse(reader[property].ToString(), out result) ? result : DateTime.Now);
                     }
                     else
                     {
                         ordem.GetType()
-                             .GetProperty(propriedade.ToString())
-                             .SetValue(ordem, reader[propriedade.ToString()].ToString());
+                                   .GetProperty(sliced)
+                                   .SetValue(ordem, (reader[property].ToString() == null ? "" : reader[property].ToString()));
                     }
                 }
+
                 ordens.Add(ordem);
             }
             return ordens;

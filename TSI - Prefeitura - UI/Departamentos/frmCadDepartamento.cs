@@ -10,8 +10,7 @@ using TSI___Prefeitura___Dominio;
 namespace TSI___Prefeitura.Departamentos
 {
     public partial class frmCadDepartamento : Form
-    {
-        ControlesIteradores iteradores;
+    {   
         Departamento departamento;
         DepartamentoAplicacao departamentoAplicacao;
         FuncionarioAplicacao funcionarioAplicacao;
@@ -24,32 +23,38 @@ namespace TSI___Prefeitura.Departamentos
         private void frmCadDepartamento_Shown(object sender, EventArgs e)
         {
             this.funcionarioAplicacao = new FuncionarioAplicacao();
-            List<Funcionario> funcionarios = this.funcionarioAplicacao.buscarGerentesDisponiveis();
-                        
-            for (int index = 0; index < funcionarios.Count; index++)
+            try
             {
-                if(index == 0)
+                List<Funcionario> funcionarios = this.funcionarioAplicacao.buscarGerentesDisponiveis();
+                for (int index = 0; index < funcionarios.Count; index++)
                 {
-                    dgvGerentes.Rows[index].Cells[0].Value = funcionarios[index].CodFuncionario;
-                    dgvGerentes.Rows[index].Cells[1].Value = funcionarios[index].NomeCompleto;
+                    if (index == 0)
+                    {
+                        dgvGerentes.Rows[index].Cells[0].Value = funcionarios[index].CodFuncionario;
+                        dgvGerentes.Rows[index].Cells[1].Value = funcionarios[index].NomeCompleto;
+                    }
+                    else
+                    {
+                        dgvGerentes.Rows.Add();
+                        dgvGerentes.Rows[index - 1].Cells[0].Value = funcionarios[index].CodFuncionario;
+                        dgvGerentes.Rows[index - 1].Cells[1].Value = funcionarios[index].NomeCompleto;
+                    }
                 }
-                else
-                {
-                    dgvGerentes.Rows.Add();
-                    dgvGerentes.Rows[index - 1].Cells[0].Value = funcionarios[index].CodFuncionario;
-                    dgvGerentes.Rows[index - 1].Cells[1].Value = funcionarios[index].NomeCompleto;
-                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Erro");
+                this.Dispose();
             }
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             this.departamentoAplicacao = new DepartamentoAplicacao();
-            this.iteradores = new ControlesIteradores();
             bool camposPreenchidos = true;
             foreach (GroupBox groupbox in this.Controls.OfType<GroupBox>().OrderBy(c => c.TabIndex))
             {
-                string tag = iteradores.checharCampoVazio(groupbox);
+                string tag = ControlesIteradores.checharCampoVazio(groupbox);
                 if (tag != string.Empty)
                 {
                     MessageBox.Show("Campo '" + tag + "' vazio!", "Aviso");
@@ -57,24 +62,35 @@ namespace TSI___Prefeitura.Departamentos
                     break;
                 }
             }
-            if(this.lblCodigoGerenteEscolhido.Text == "")
+            /*if(this.lblCodigoGerenteEscolhido.Text == "")
             {
                 MessageBox.Show("Você deve escolher um gerente para o departamento", "Aviso");
                 camposPreenchidos = false;
-            }
+            }*/
             if (camposPreenchidos)
             {
+                int codigoGerente;
                 string nomeDepartamento = this.tbNomeDepartamento.Text;
-                int codigoGerente = Convert.ToInt32(this.lblCodigoGerenteEscolhido.Text.ToString());
+                bool codigoGerenteValido = int.TryParse(this.lblCodigoGerenteEscolhido.Text.ToString(), out codigoGerente);
                 this.departamento = new Departamento(nomeDepartamento, codigoGerente);
-                this.departamentoAplicacao.salvarDepartamento(this.departamento);
-                MessageBox.Show("Departamento salvo com sucesso!", "Aviso");
-                foreach (GroupBox groupbox in this.Controls.OfType<GroupBox>().OrderBy(c => c.TabIndex))
+                try
                 {
-                    iteradores.limparControles(groupbox);
+                    this.departamentoAplicacao.salvarDepartamento(this.departamento);
+                    MessageBox.Show("Departamento salvo com sucesso!", "Aviso");
                 }
-                lblNomeGerenteEscolhido.Text = "Selecione um gerente na tabela ao lado";
-                lblCodigoGerenteEscolhido.Text = "";
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erro");
+                }
+                finally
+                {
+                    foreach (GroupBox groupbox in this.Controls.OfType<GroupBox>().OrderBy(c => c.TabIndex))
+                    {
+                        ControlesIteradores.limparControles(groupbox);
+                    }
+                    lblNomeGerenteEscolhido.Text = "Selecione um gerente na tabela ao lado";
+                    lblCodigoGerenteEscolhido.Text = "";
+                }
             }
         }
 
