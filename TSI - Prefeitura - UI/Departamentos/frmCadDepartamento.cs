@@ -105,5 +105,10 @@ namespace TSI___Prefeitura.Departamentos
                 lblCodigoGerenteEscolhido.Text = dgvGerentes.Rows[rowIndex].Cells[columnIndex - 1].Value.ToString();
             }
         }
+
+        private void frmCadDepartamento_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

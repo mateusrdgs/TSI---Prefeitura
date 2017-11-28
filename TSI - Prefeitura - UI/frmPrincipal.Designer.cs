@@ -74,6 +74,7 @@
             this.buscarFuncionarioToolStripMenuItem.Name = "buscarFuncionarioToolStripMenuItem";
             this.buscarFuncionarioToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.buscarFuncionarioToolStripMenuItem.Text = "Buscar";
+            this.buscarFuncionarioToolStripMenuItem.Click += new System.EventHandler(this.buscarFuncionarioToolStripMenuItem_Click);
             // 
             // departamentosToolStripMenuItem
             // 
@@ -87,15 +88,16 @@
             // cadastrarDepartamentoToolStripMenuItem
             // 
             this.cadastrarDepartamentoToolStripMenuItem.Name = "cadastrarDepartamentoToolStripMenuItem";
-            this.cadastrarDepartamentoToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.cadastrarDepartamentoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.cadastrarDepartamentoToolStripMenuItem.Text = "Cadastrar";
             this.cadastrarDepartamentoToolStripMenuItem.Click += new System.EventHandler(this.cadastrarToolStripMenuItem_Click);
             // 
             // buscarDepartamentoToolStripMenuItem
             // 
             this.buscarDepartamentoToolStripMenuItem.Name = "buscarDepartamentoToolStripMenuItem";
-            this.buscarDepartamentoToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.buscarDepartamentoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.buscarDepartamentoToolStripMenuItem.Text = "Buscar";
+            this.buscarDepartamentoToolStripMenuItem.Click += new System.EventHandler(this.buscarDepartamentoToolStripMenuItem_Click);
             // 
             // ordensToolStripMenuItem
             // 
@@ -109,14 +111,14 @@
             // cadastrarOrdemServicoToolStripMenuItem
             // 
             this.cadastrarOrdemServicoToolStripMenuItem.Name = "cadastrarOrdemServicoToolStripMenuItem";
-            this.cadastrarOrdemServicoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cadastrarOrdemServicoToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.cadastrarOrdemServicoToolStripMenuItem.Text = "Cadastrar";
             this.cadastrarOrdemServicoToolStripMenuItem.Click += new System.EventHandler(this.cadastrarOrdemServicoToolStripMenuItem_Click);
             // 
             // buscarOrdemServicoToolStripMenuItem
             // 
             this.buscarOrdemServicoToolStripMenuItem.Name = "buscarOrdemServicoToolStripMenuItem";
-            this.buscarOrdemServicoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.buscarOrdemServicoToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.buscarOrdemServicoToolStripMenuItem.Text = "Buscar";
             this.buscarOrdemServicoToolStripMenuItem.Click += new System.EventHandler(this.buscarOrdemServicoToolStripMenuItem_Click);
             // 

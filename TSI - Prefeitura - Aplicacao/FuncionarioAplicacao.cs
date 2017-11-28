@@ -47,7 +47,7 @@ namespace TSI___Prefeitura___Aplicacao
                 parametros.Add("@sCidade", funcionario.Cidade);
                 parametros.Add("@sEstado", funcionario.Estado);
                 parametros.Add("@nCodPermissao", funcionario.CodPermissao);
-                parametros.Add("@nCodDepartamento", null);
+                parametros.Add("@nCodDepartamento", funcionario.CodDepartamento);
                 contexto.executarComando(strComando, parametros);
             }
         }
@@ -74,10 +74,9 @@ namespace TSI___Prefeitura___Aplicacao
                 string.Format(
                     @"SELECT func.nCodFuncionario, func.sNomeCompleto
                       FROM tblFuncionario as func
-                      RIGHT JOIN tblDepartamento as dept
-                      ON func.nCodFuncionario != dept.nCodGerente
-                      WHERE func.nCodPermissao = 2
-                    "
+                      LEFT JOIN tblDepartamento as dept
+                      ON func.nCodFuncionario = dept.nCodGerente
+                      WHERE func.nCodPermissao = 2 AND dept.nCodGerente IS NULL"
                 );
             using (contexto = new Contexto())
             {

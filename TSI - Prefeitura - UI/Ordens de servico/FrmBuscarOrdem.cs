@@ -15,7 +15,6 @@ namespace TSI___Prefeitura.Ordens_de_servico
         Debouncer debouncer;
         OrdemAplicacao ordemAplicacao;
         List<Ordem> ordens;
-        List<Ordem> ordensCopia;
         public FrmBuscarOrdem()
         {
             InitializeComponent();
@@ -23,22 +22,25 @@ namespace TSI___Prefeitura.Ordens_de_servico
             debouncer.debounceHandler += this.debounceHandler;
         }
 
-        private void FrmBuscarOrdem_Shown(object sender, EventArgs e)
+        private void FrmBuscarOrdem_Load(object sender, EventArgs e)
         {
             this.ordemAplicacao = new OrdemAplicacao();
             try
             {
                 this.ordens = this.ordemAplicacao.buscarOrdens();
-                this.ordensCopia = this.ordemAplicacao.buscarOrdens();
-                this.anexarAoDataGridView(this.ordens);
                 //this.dgvOrdens.RowHeadersVisible = false;
-                this.dgvOrdens.Columns[0].Visible = false;
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Erro");
                 this.Dispose();
             }
+        }
+
+        private void FrmBuscarOrdem_Shown(object sender, EventArgs e)
+        {
+            this.anexarAoDataGridView(this.ordens);
+            this.dgvOrdens.Columns[0].Visible = false;
         }
 
         private void tbBuscar_TextChanged(object sender, EventArgs e)
@@ -70,7 +72,7 @@ namespace TSI___Prefeitura.Ordens_de_servico
                     else
                     {   
                         this.anexarAoDataGridView(
-                            this.ordensCopia.Where(x => x.Descricao.ToLowerInvariant().Contains(this.tbBuscar.Text.ToLowerInvariant())).ToList()
+                            this.ordens.Where(x => x.Descricao.ToLowerInvariant().Contains(this.tbBuscar.Text.ToLowerInvariant())).ToList()
                         );
                     }
                 })
@@ -91,11 +93,6 @@ namespace TSI___Prefeitura.Ordens_de_servico
                 dgvOrdens.Rows[index].Cells[4].Value = ordens[index].Status;
                 dgvOrdens.Rows[index].Cells[5].Value = ordens[index].CodFuncionario;
             }
-        }
-
-        private void FrmBuscarOrdem_Load(object sender, EventArgs e)
-        {
-
-        }
+        }        
     }
 }

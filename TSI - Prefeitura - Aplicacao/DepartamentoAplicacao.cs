@@ -27,12 +27,16 @@ namespace TSI___Prefeitura___Aplicacao
             string strComando =
                 string.Format(
                     @"INSERT INTO tblDepartamento
-                      VALUES ('{0}', '{1}')",
-                    departamento.NomeDepartamento, (departamento.CodGerente > 0 ? departamento.CodGerente : (int?)null)
+                      VALUES (
+                        @sNomeDepartamento, @nCodGerente
+                    )"
                 );
             using (contexto = new Contexto())
             {
-                contexto.executarComando(strComando);
+                Dictionary<string, dynamic> parametros = new Dictionary<string, dynamic>();
+                parametros.Add("@sNomeDepartamento", departamento.NomeDepartamento);
+                parametros.Add("@nCodGerente", departamento.CodGerente);
+                contexto.executarComando(strComando, parametros);
             }
         }
 

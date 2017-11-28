@@ -9,7 +9,9 @@ namespace TSI___Prefeitura
     public partial class frmPrincipal : Form
     {
         frmCadFuncionario frmCadFuncionario;
+        FrmBuscarFuncionario frmBuscarFuncionario;
         frmCadDepartamento frmCadDepartamento;
+        FrmBuscarDepartamento frmBuscarDepartamento;
         FrmCadOrdemServico frmCadOrdemServico;
         FrmBuscarOrdem frmBuscarOrdem;
 
@@ -92,6 +94,42 @@ namespace TSI___Prefeitura
             {
                 this.frmBuscarOrdem.WindowState = FormWindowState.Maximized;
                 this.frmBuscarOrdem.Show();
+            }
+        }
+
+        private void buscarFuncionarioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.frmBuscarFuncionario == null || this.frmBuscarFuncionario.IsDisposed)
+            {
+                this.frmBuscarFuncionario = new FrmBuscarFuncionario();
+                this.frmBuscarFuncionario.MdiParent = this;
+                this.frmBuscarFuncionario.MaximizeBox = false;
+                this.frmBuscarFuncionario.MinimizeBox = false;
+                this.frmBuscarFuncionario.WindowState = FormWindowState.Maximized;
+                this.frmBuscarFuncionario.Show();
+            }
+            else
+            {
+                this.frmBuscarFuncionario.WindowState = FormWindowState.Maximized;
+                this.frmBuscarFuncionario.Show();
+            }
+        }
+
+        private void buscarDepartamentoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.frmBuscarDepartamento == null || this.frmBuscarDepartamento.IsDisposed)
+            {
+                this.frmBuscarDepartamento = new FrmBuscarDepartamento();
+                this.frmBuscarDepartamento.MdiParent = this;
+                this.frmBuscarDepartamento.MaximizeBox = false;
+                this.frmBuscarDepartamento.MinimizeBox = false;
+                this.frmBuscarDepartamento.WindowState = FormWindowState.Maximized;
+                this.frmBuscarDepartamento.Show();
+            }
+            else
+            {
+                this.frmBuscarDepartamento.WindowState = FormWindowState.Maximized;
+                this.frmBuscarDepartamento.Show();
             }
         }
     }

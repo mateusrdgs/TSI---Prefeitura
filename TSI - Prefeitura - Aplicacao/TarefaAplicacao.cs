@@ -52,13 +52,14 @@ namespace TSI___Prefeitura___Aplicacao
             }
         }
 
-        public List<Tarefa> buscarTarefas()
+        public List<Tarefa> buscarTarefasOrdem(int codTarefa)
         {
             string strComando =
                 string.Format(
                     @"SELECT *
                       FROM tblTarefa
-                    "
+                      WHERE nCodOrdem = {0}
+                    ", codTarefa
                 );
             using (contexto = new Contexto())
             {
@@ -123,28 +124,32 @@ namespace TSI___Prefeitura___Aplicacao
 
         private List<Tarefa> readerParaListaTarefa(SqlDataReader reader)
         {
-            var Tarefas = new List<Tarefa>();
+            var tarefas = new List<Tarefa>();
             while (reader.Read())
             {
-                var Tarefa = new Tarefa();
-                foreach (var propriedade in reader)
+                var tarefa = new Tarefa();
+                for (int index = 0; index < reader.FieldCount; index++)
                 {
-                    if (propriedade.ToString().StartsWith("n"))
+                    string property = reader.GetName(index).ToString(),
+                           sliced = property.Remove(0, 1);
+
+                    if (reader.GetName(index).ToString().StartsWith("n"))
                     {
-                        Tarefa.GetType()
-                                   .GetProperty(propriedade.ToString())
-                                   .SetValue(Tarefa, Convert.ToInt32(reader[propriedade.ToString()]));
+                        int result;
+                        tarefa.GetType()
+                                   .GetProperty(sliced)
+                                   .SetValue(tarefa, int.TryParse(reader[property].ToString(), out result) ? result : 0);
                     }
                     else
                     {
-                        Tarefa.GetType()
-                                   .GetProperty(propriedade.ToString())
-                                   .SetValue(Tarefa, reader[propriedade.ToString()].ToString());
+                        tarefa.GetType()
+                                   .GetProperty(sliced)
+                                   .SetValue(tarefa, (reader[property].ToString() == null ? "" : reader[property].ToString()));
                     }
                 }
-                Tarefas.Add(Tarefa);
+                tarefas.Add(tarefa);
             }
-            return Tarefas;
+            return tarefas;
         }
     }
 }

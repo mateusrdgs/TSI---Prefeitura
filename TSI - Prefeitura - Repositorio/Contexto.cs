@@ -44,7 +44,7 @@ namespace TSI___Prefeitura___Repositorio
             };
             foreach (KeyValuePair<string, dynamic> parametro in parametros)
             {
-                command.Parameters.AddWithValue(parametro.Key, (parametro.Value == null ? DBNull.Value : parametro.Value));
+                command.Parameters.AddWithValue(parametro.Key, ((parametro.Value == null || (parametro.Value is int && parametro.Value == 0)) ? DBNull.Value : parametro.Value));
             };
             command.ExecuteNonQuery();
         }

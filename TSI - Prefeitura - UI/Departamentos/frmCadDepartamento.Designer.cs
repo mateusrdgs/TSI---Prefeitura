@@ -177,6 +177,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmCadDepartamento";
             this.Text = "Cadastrar departamento";
+            this.Load += new System.EventHandler(this.frmCadDepartamento_Load);
             this.Shown += new System.EventHandler(this.frmCadDepartamento_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

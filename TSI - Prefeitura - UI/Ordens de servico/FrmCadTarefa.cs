@@ -19,6 +19,7 @@ namespace TSI___Prefeitura.Ordens_de_servico
         DepartamentoAplicacao departamentoAplicacao;
         TarefaAplicacao tarefaAplicacao;
         List<Departamento> departamentos;
+        List<Tarefa> tarefas;
         Tarefa tarefa;
         int codOrdem;
 
@@ -63,10 +64,18 @@ namespace TSI___Prefeitura.Ordens_de_servico
             }
             if(camposPreenchidos)
             {
-                string descricao = this.tbDescricao.Text.ToString();
-                int codDepartamento = Convert.ToInt32(this.cbDepartamento.SelectedValue.ToString());
-                this.tarefa = new Tarefa(descricao, this.codOrdem, codDepartamento, 1);
-                this.tarefaAplicacao.salvarTarefa(this.tarefa);
+                try
+                {
+                    string descricao = this.tbDescricao.Text.ToString();
+                    int codDepartamento = Convert.ToInt32((this.cbDepartamento.SelectedItem as ComboBoxItem).Value.ToString());
+                    this.tarefa = new Tarefa(descricao, this.codOrdem, codDepartamento, 1);
+                    this.tarefaAplicacao.salvarTarefa(this.tarefa);
+                    MessageBox.Show("Tarefa salva com sucesso!", "Aviso");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Erro");
+                }
             }
         }
     }

@@ -242,7 +242,7 @@
             this.sDescricao.HeaderText = "Descrição";
             this.sDescricao.Name = "sDescricao";
             this.sDescricao.ReadOnly = true;
-            this.sDescricao.Width = 129;
+            this.sDescricao.Width = 229;
             // 
             // nCodOrdem
             // 
@@ -252,7 +252,7 @@
             // 
             // nCodDepartamento
             // 
-            this.nCodDepartamento.HeaderText = "Dept";
+            this.nCodDepartamento.HeaderText = "Departamento";
             this.nCodDepartamento.Name = "nCodDepartamento";
             this.nCodDepartamento.ReadOnly = true;
             // 
@@ -301,11 +301,11 @@
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Label lblInfoCodigoOrdem;
         private System.Windows.Forms.Label lblCodigoOrdem;
+        private System.Windows.Forms.Button btnNovaTarefa;
         private System.Windows.Forms.DataGridViewTextBoxColumn nCodTarefa;
         private System.Windows.Forms.DataGridViewTextBoxColumn sDescricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn nCodOrdem;
         private System.Windows.Forms.DataGridViewTextBoxColumn nCodDepartamento;
         private System.Windows.Forms.DataGridViewTextBoxColumn nStatus;
-        private System.Windows.Forms.Button btnNovaTarefa;
     }
 }

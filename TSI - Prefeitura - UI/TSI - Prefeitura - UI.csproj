@@ -48,6 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Departamentos\FrmBuscarDepartamento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Departamentos\FrmBuscarDepartamento.Designer.cs">
+      <DependentUpon>FrmBuscarDepartamento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Departamentos\frmCadDepartamento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,11 +66,23 @@
     <Compile Include="frmPrincipal.Designer.cs">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="Funcionarios\FrmBuscarFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Funcionarios\FrmBuscarFuncionario.Designer.cs">
+      <DependentUpon>FrmBuscarFuncionario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Funcionarios\frmCadFuncionario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Funcionarios\frmCadFuncionario.Designer.cs">
       <DependentUpon>frmCadFuncionario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Funcionarios\FrmGerenciarFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Funcionarios\FrmGerenciarFuncionario.Designer.cs">
+      <DependentUpon>FrmGerenciarFuncionario.cs</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ComboBoxItem.cs" />
     <Compile Include="Helpers\ControlesIteradores.cs" />
@@ -95,14 +113,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Departamentos\FrmBuscarDepartamento.resx">
+      <DependentUpon>FrmBuscarDepartamento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Departamentos\frmCadDepartamento.resx">
       <DependentUpon>frmCadDepartamento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPrincipal.resx">
       <DependentUpon>frmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Funcionarios\FrmBuscarFuncionario.resx">
+      <DependentUpon>FrmBuscarFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Funcionarios\frmCadFuncionario.resx">
       <DependentUpon>frmCadFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Funcionarios\FrmGerenciarFuncionario.resx">
+      <DependentUpon>FrmGerenciarFuncionario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Ordens de servico\FrmBuscarOrdem.resx">
       <DependentUpon>FrmBuscarOrdem.cs</DependentUpon>
